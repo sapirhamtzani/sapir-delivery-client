@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  fetch('https://sapir-delivery-server.herokuapp.com/sapir').then(res => res.text()).then(console.log);
   return (
     <div className="App">
       <header className="App-header">
