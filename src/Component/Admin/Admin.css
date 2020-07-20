@@ -1,0 +1,12 @@
+.AdminPage {
+  width: 800px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.headlineAdmin {
+  margin: auto;
+  margin-top: 20px;
+  display: table;
+  text-decoration: underline;
+}

@@ -9,6 +9,7 @@ const Map = (props) => {
     radius: '',
   };
 
+  let method = props.method;
   return (
     <div className="mapContainer">
       <GoogleMap
@@ -24,8 +25,11 @@ const Map = (props) => {
             fillColor: '#FF0000',
             fillOpacity: 0.3,
             map,
-            center: { lat: 32.109333, lng: 34.855499 },
-            radius: 400,
+            center:
+              method !== null
+                ? { lat: method.centerLat, lng: method.centerLng }
+                : { lat: 32.109333, lng: 34.855499 },
+            radius: method !== null ? method.radius : 400,
             draggable: true,
             editable: true,
           });
@@ -40,7 +44,10 @@ const Map = (props) => {
       <div className="buttonContainer">
         <button
           className="btn btn-primary"
-          onClick={() => props.setLocation(currentCircleObg)}
+          onClick={() => {
+            console.log('click', currentCircleObg);
+            props.setLocation(currentCircleObg);
+          }}
         >
           Add location
         </button>

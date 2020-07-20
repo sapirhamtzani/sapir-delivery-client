@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import './MethodsList.css';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -26,14 +27,14 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(methodId, methodName, deliveryRate) {
-  return { methodId, methodName, deliveryRate };
-}
-
-const rows = () => [
-  createData('1', '90210', '6$'),
-  createData('2', 'Tel-Aviv', '10$'),
-];
+// function createData(methodId, methodName, deliveryRate) {
+//   return { methodId, methodName, deliveryRate };
+// }
+//
+// const rows = () => [
+//   createData('1', '90210', '6$'),
+//   createData('2', 'Tel-Aviv', '10$'),
+// ];
 
 const useStyles = makeStyles({
   table: {
@@ -41,9 +42,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MethodsList(props) {
+const MethodsList = (props) => {
   const classes = useStyles();
   const { methodsList } = props;
+  console.log(methodsList);
 
   return (
     <TableContainer component={Paper}>
@@ -73,4 +75,6 @@ export default function MethodsList(props) {
       </Table>
     </TableContainer>
   );
-}
+};
+
+export default MethodsList;

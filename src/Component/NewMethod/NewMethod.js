@@ -14,6 +14,8 @@ class NewMethod extends Component {
       methodName: '',
       methodRate: '',
     };
+
+    this.method = props.method ? props.method : null;
   }
 
   handleChangeMethodName(event) {
@@ -29,11 +31,25 @@ class NewMethod extends Component {
   }
 
   setLocation(currentCircleObg) {
+    console.log('currentCircleObg', currentCircleObg);
     this.setState({
       radius: currentCircleObg.radius,
       centerLat: currentCircleObg.lat,
       centerLng: currentCircleObg.lng,
     });
+  }
+  componentDidMount() {
+    if (this.method !== null) {
+      console.log('NewMethod', this.method);
+      this.setState({
+        radius: this.method.radius,
+        centerLat: this.method.centerLat,
+        centerLng: this.method.centerLng,
+        zipcode: this.method.zipcode,
+        methodName: this.method.name,
+        methodRate: this.method.rate,
+      });
+    }
   }
 
   handleSubmit() {
@@ -60,6 +76,7 @@ class NewMethod extends Component {
       <div>
         <h2>Set your method range using the map or enter a zip code</h2>
         <Map
+          method={this.method}
           setLocation={(currentCircleObg) => this.setLocation(currentCircleObg)}
         />
         <div className="formContainer">
@@ -69,6 +86,7 @@ class NewMethod extends Component {
               type="text"
               className="form-control"
               placeholder="Enter Zip Code (if you used the map is not mandatory)"
+              value={this.method ? this.method.zipcode : ''}
               onChange={(event) => this.handleChangeZipCode(event)}
             />
           </div>
@@ -78,6 +96,7 @@ class NewMethod extends Component {
               type="text"
               className="form-control"
               placeholder="Enter the method name"
+              value={this.state.name}
               onChange={(event) => this.handleChangeMethodName(event)}
             />
           </div>
@@ -87,6 +106,7 @@ class NewMethod extends Component {
               type="text"
               className="form-control"
               placeholder="Enter the method rate"
+              value={this.state.rate}
               onChange={(event) => this.handleChangeRate(event)}
             />
           </div>
