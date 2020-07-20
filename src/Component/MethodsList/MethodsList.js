@@ -30,7 +30,7 @@ function createData(methodId, methodName, deliveryRate) {
   return { methodId, methodName, deliveryRate };
 }
 
-const rows = [
+const rows = () => [
   createData('1', '90210', '6$'),
   createData('2', 'Tel-Aviv', '10$'),
 ];
@@ -43,7 +43,8 @@ const useStyles = makeStyles({
 
 export default function MethodsList() {
   const classes = useStyles();
-  //send props to function rows
+  const { methodsList } = props;
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
@@ -55,14 +56,16 @@ export default function MethodsList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.methodId}>
+          {Object.keys(methodsList).map((kay) => (
+            <StyledTableRow key={kay}>
               <StyledTableCell component="th" scope="row">
-                {row.methodId}
+                {kay}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.methodName}</StyledTableCell>
               <StyledTableCell align="right">
-                {row.deliveryRate}
+                {methodsList[key].name}
+              </StyledTableCell>
+              <StyledTableCell align="right">
+                {methodsList[key].rate}
               </StyledTableCell>
             </StyledTableRow>
           ))}

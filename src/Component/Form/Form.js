@@ -17,7 +17,7 @@ class Form extends Component {
       address: this.state.address,
       zipcode: this.state.zipcode,
     };
-    fetch('https://sapir-delivery-server.herokuapp.com/getMethods', {
+    fetch('https://sapir-delivery-server.herokuapp.com/getUserMethods', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userObj),
