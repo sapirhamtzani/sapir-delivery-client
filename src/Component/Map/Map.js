@@ -29,7 +29,7 @@ const Map = (props) => {
             draggable: true,
             editable: true,
           });
-          maps.event.addListener(circle, 'drag', (event) => {
+          maps.event.addListener(circle, 'drag', () => {
             currentCircleObg.lat = circle.getCenter().lat();
             currentCircleObg.lng = circle.getCenter().lng();
             currentCircleObg.radius = circle.radius;
