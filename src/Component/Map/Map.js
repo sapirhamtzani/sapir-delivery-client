@@ -37,21 +37,10 @@ const Map = (props) => {
             currentCircleObg.lat = circle.getCenter().lat();
             currentCircleObg.lng = circle.getCenter().lng();
             currentCircleObg.radius = circle.radius;
-            console.log(currentCircleObg);
+            props.setLocation(currentCircleObg);
           });
         }}
       />
-      <div className="buttonContainer">
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            console.log('click', currentCircleObg);
-            props.setLocation(currentCircleObg);
-          }}
-        >
-          Add location
-        </button>
-      </div>
     </div>
   );
 };

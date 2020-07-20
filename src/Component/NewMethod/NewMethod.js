@@ -86,7 +86,7 @@ class NewMethod extends Component {
               type="text"
               className="form-control"
               placeholder="Enter Zip Code (if you used the map is not mandatory)"
-              value={this.method ? this.method.zipcode : ''}
+              value={this.state.zipcode}
               onChange={(event) => this.handleChangeZipCode(event)}
             />
           </div>
@@ -96,7 +96,7 @@ class NewMethod extends Component {
               type="text"
               className="form-control"
               placeholder="Enter the method name"
-              value={this.state.name}
+              value={this.state.methodName}
               onChange={(event) => this.handleChangeMethodName(event)}
             />
           </div>
@@ -106,7 +106,7 @@ class NewMethod extends Component {
               type="text"
               className="form-control"
               placeholder="Enter the method rate"
-              value={this.state.rate}
+              value={this.state.methodRate}
               onChange={(event) => this.handleChangeRate(event)}
             />
           </div>
