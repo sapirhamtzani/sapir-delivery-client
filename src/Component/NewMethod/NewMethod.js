@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GoogleMap from '../GoogleMap/GoogleMap';
+import Map from '../Map/Map';
 import '../Form/Form.css';
 import './NewMethod.css';
 
@@ -7,7 +7,9 @@ class NewMethod extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bounders: '',
+      radius: '',
+      centerLat: '',
+      centerLng: '',
       zipcode: '',
       methodName: '',
       methodRate: '',
@@ -26,8 +28,17 @@ class NewMethod extends Component {
     this.setState({ methodRate: event.target.value });
   }
 
-  handleSubmit(){
-    const methodObj= this.state;
+  setLocation(currentCircleObg) {
+    this.setState({
+      radius: currentCircleObg.radius,
+      centerLat: currentCircleObg.lat,
+      centerLng: currentCircleObg.lng,
+    });
+  }
+
+  handleSubmit() {
+    const methodObj = this.state;
+    console.log('methodObj', methodObj);
     fetch('https://sapir-delivery-server.herokuapp.com/addMethod', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -35,7 +46,9 @@ class NewMethod extends Component {
     }).then(async (response) => {
       let res = await response.json();
       if (res.success) {
-        window.location.assign("https://sapir-delivery-client.herokuapp.com/Admin");
+        window.location.assign(
+          'https://sapir-delivery-client.herokuapp.com/Admin'
+        );
       } else {
         alert('No suitable methods');
       }
@@ -46,7 +59,9 @@ class NewMethod extends Component {
     return (
       <div>
         <h2>Set your method range using the map or enter a zip code</h2>
-        <GoogleMap className="googleMapContainer" />
+        <Map
+          setLocation={(currentCircleObg) => this.setLocation(currentCircleObg)}
+        />
         <div className="formContainer">
           <div className="form-group">
             <label>Zip Code</label>
@@ -74,6 +89,23 @@ class NewMethod extends Component {
               placeholder="Enter the method rate"
               onChange={(event) => this.handleChangeRate(event)}
             />
+          </div>
+          <div className="form-group">
+            <label>Location</label>
+            <div>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.centerLat}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.centerLng}
+              />
+            </div>
           </div>
           <div className="buttonContainer">
             <button

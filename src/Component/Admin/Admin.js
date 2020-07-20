@@ -1,6 +1,7 @@
 import React from 'react';
 import MethodsList from '../MethodsList/MethodsList';
 
+//return to class with lifecycle compononet
 function Admin() {
   const list = () => {
     return fetch(
@@ -11,10 +12,11 @@ function Admin() {
         .then(() => res.list)
         .catch((e) => alert(`failed to fetch ${e}`));
     });
+
   };
   return (
     <div className="AdminPage">
-      <MethodsList methodsList={list} />
+      <MethodsList methodsList={list()} />
     </div>
   );
 }
