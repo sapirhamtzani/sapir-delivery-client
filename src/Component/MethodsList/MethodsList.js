@@ -41,7 +41,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MethodsList() {
+export default function MethodsList(props) {
   const classes = useStyles();
   const { methodsList } = props;
 
@@ -56,10 +56,10 @@ export default function MethodsList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {Object.keys(methodsList).map((kay) => (
-            <StyledTableRow key={kay}>
+          {Object.keys(methodsList).map((key) => (
+            <StyledTableRow key={key}>
               <StyledTableCell component="th" scope="row">
-                {kay}
+                {key}
               </StyledTableCell>
               <StyledTableCell align="right">
                 {methodsList[key].name}
