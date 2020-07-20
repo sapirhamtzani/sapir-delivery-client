@@ -32,8 +32,8 @@ form-group {
   cursor: pointer;
 }
 
-
 .btn {
+  margin-left: -600px;
   display: inline-block;
   font-weight: 400;
   text-align: center;

@@ -1,3 +1,7 @@
 .TableContainer {
   width: 80%;
 }
+
+.tableRow {
+  cursor: pointer;
+}

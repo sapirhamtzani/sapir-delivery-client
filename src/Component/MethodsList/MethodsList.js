@@ -27,15 +27,6 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-// function createData(methodId, methodName, deliveryRate) {
-//   return { methodId, methodName, deliveryRate };
-// }
-//
-// const rows = () => [
-//   createData('1', '90210', '6$'),
-//   createData('2', 'Tel-Aviv', '10$'),
-// ];
-
 const useStyles = makeStyles({
   table: {
     minWidth: 400,
@@ -59,7 +50,11 @@ const MethodsList = (props) => {
         </TableHead>
         <TableBody>
           {Object.keys(methodsList).map((key) => (
-            <StyledTableRow key={key}>
+            <StyledTableRow
+              className="tableRow"
+              onClick={() => props.moveToEditMethodPage(key)}
+              key={key}
+            >
               <StyledTableCell component="th" scope="row">
                 {key}
               </StyledTableCell>

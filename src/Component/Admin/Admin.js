@@ -19,6 +19,12 @@ class Admin extends Component {
     );
   }
 
+  moveToEditMethodPage(methodId) {
+    window.location.assign(
+      `https://sapir-delivery-client.herokuapp.com/EditMethod?id=${methodId}`
+    );
+  }
+
   componentDidMount() {
     fetch('https://sapir-delivery-server.herokuapp.com/getAllMethods')
       .then(async (response) => {
@@ -35,7 +41,12 @@ class Admin extends Component {
           <h2>Delivery Methods</h2>
         </div>
         <div className="AdminPage">
-          <MethodsList methodsList={this.state.list} />
+          <MethodsList
+            methodsList={this.state.list}
+            moveToEditMethodPage={(methodId) =>
+              this.moveToEditMethodPage(methodId)
+            }
+          />
         </div>
         <div className="buttonContainer">
           <button
