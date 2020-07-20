@@ -1,13 +1,12 @@
-import React from "react";
-
+import React from 'react';
+import MethodsList from '../MethodsList/MethodsList';
 
 function Admin() {
-
-    return (
-        <div className="Form">
-            <div> hello Admin </div>
-        </div>
-    );
+  return (
+    <div className="AdminPage">
+      <MethodsList />
+    </div>
+  );
 }
 
 export default Admin;

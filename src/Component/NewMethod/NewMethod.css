@@ -1,0 +1,10 @@
+
+.googleMapContainer {
+  margin-top: auto;
+}
+
+.buttonContainer {
+  align-items: flex-start;
+  width: 450px;
+  margin-top: 10px;
+}

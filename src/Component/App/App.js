@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Form from '../Form/Form';
 import Error from '../Error/Error';
-import Admin from '../Admin/Admin'
+import Form from '../Form/Form';
+import Admin from '../Admin/Admin';
+import EditMethod from '../EditMethod/EditMethod';
+import NewMethod from '../NewMethod/NewMethod';
 import './App.css';
-import logo from '../../logo.svg';
 
 function App() {
   // fetch('https://sapir-delivery-server.herokuapp.com/sapir')
@@ -16,24 +17,11 @@ function App() {
         <Switch>
           <Route path="/" component={Form} exact />
           <Route path="/Admin" component={Admin} />
-          {/*<Route path="/shop" component={Shop} />*/}
+          <Route path="/EditMethod" component={EditMethod} />
+          <Route path="/NewMethod" component={NewMethod} />
           <Route component={Error} />
         </Switch>
       </main>
-      {/*<header className="App-header">*/}
-      {/*<img src={logo} className="App-logo" alt="logo" />*/}
-      {/*<p>*/}
-      {/*Hi sapir1! Edit <code>src/App.js</code> and save to reload.*/}
-      {/*</p>*/}
-      {/*<a*/}
-      {/*className="App-link"*/}
-      {/*href="https://reactjs.org"*/}
-      {/*target="_blank"*/}
-      {/*rel="noopener noreferrer"*/}
-      {/*>*/}
-      {/*Learn React*/}
-      {/*</a>*/}
-      {/*</header>*/}
     </div>
   );
 }
