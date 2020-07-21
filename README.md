@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The project is being deployed with this url (https://sapir-delivery-client.herokuapp.com)
 
 In the project directory, you can run:
 
