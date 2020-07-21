@@ -50,7 +50,7 @@ class Admin extends Component {
         <div className="buttonContainerAdmin">
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btnAdmin btn-primary"
             onClick={() => this.moveToNewMethodPage()}
           >
             Add new Method

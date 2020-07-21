@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Map from '../Map/Map';
-import '../Form/Form.css';
 import './NewMethod.css';
 
 class NewMethod extends Component {
@@ -71,16 +70,23 @@ class NewMethod extends Component {
     });
   }
 
+  checkFields = () =>
+    (this.state.zipcode !== null && this.state.zipcode !== '') ||
+    (this.state.centerLat !== null &&
+      this.state.centerLat !== '' &&
+      this.state.centerLng !== null &&
+      this.state.centerLng !== '');
+
   render() {
     return (
-      <div>
+      <div className='newMethodContainer'>
         <h2>Set your method range using the map or enter a zip code</h2>
         <Map
           method={this.method}
           setLocation={(currentCircleObg) => this.setLocation(currentCircleObg)}
         />
         <div className="formContainer">
-          <div className="form-group">
+          <div className="form-group-methodlist">
             <label>Zip Code</label>
             <input
               type="text"
@@ -90,7 +96,7 @@ class NewMethod extends Component {
               onChange={(event) => this.handleChangeZipCode(event)}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-methodlist">
             <label>Name</label>
             <input
               type="text"
@@ -100,7 +106,7 @@ class NewMethod extends Component {
               onChange={(event) => this.handleChangeMethodName(event)}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-methodlist">
             <label>Rate</label>
             <input
               type="text"
@@ -110,7 +116,7 @@ class NewMethod extends Component {
               onChange={(event) => this.handleChangeRate(event)}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-methodlist">
             <label>Location</label>
             <div>
               <input
@@ -132,8 +138,7 @@ class NewMethod extends Component {
               type="submit"
               className="btn btn-primary"
               onClick={() =>
-                this.state.zipcode !== null ||
-                (this.state.centerLat !== null && this.state.centerLng !== null)
+                this.checkFields()
                   ? this.handleSubmit()
                   : alert(
                       'Must fill Zip Code or determine the range using the map'

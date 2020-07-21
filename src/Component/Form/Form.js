@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Autocomplete } from '@material-ui/lab';
-import { TextField } from '@material-ui/core';
 import MethodsList from '../MethodsList/MethodsList';
 import './Form.css';
 
@@ -74,29 +72,11 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="Form">
+      <div className="form">
         <div>
           <div className="headlineForm">
             <h2>Discover the deliveries closest to you</h2>
           </div>
-          {/*<Autocomplete*/}
-          {/*id="country-select-demo"*/}
-          {/*style={{ width: 300 }}*/}
-          {/*options={this.state.location}*/}
-          {/*autoHighlight*/}
-          {/*getOptionLabel={(option) => option.label}*/}
-          {/*renderInput={(params) => (*/}
-          {/*<TextField*/}
-          {/*{...params}*/}
-          {/*label="Address"*/}
-          {/*variant="outlined"*/}
-          {/*inputProps={{*/}
-          {/*...params.inputProps,*/}
-          {/*autoComplete: 'new-password', // disable autocomplete and autofill*/}
-          {/*}}*/}
-          {/*/>*/}
-          {/*)}*/}
-          {/*/>*/}
           <div className="form-group">
             <label>Address</label>
             <input
@@ -119,16 +99,18 @@ class Form extends Component {
             type="submit"
             className="btn btn-primary"
             onClick={() =>
-              this.state.address !== null
+              this.state.address && this.state.address.length > 0
                 ? this.handleSubmit()
-                : alert('address cant be empty')
+                : alert('address field cant be empty')
             }
           >
             Submit
           </button>
         </div>
         {this.state.methodsList !== null ? (
-          <MethodsList methodsList={this.state.methodsList} />
+          <div className="methodListContainer">
+            <MethodsList methodsList={this.state.methodsList} />
+          </div>
         ) : null}
       </div>
     );
