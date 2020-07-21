@@ -9,7 +9,7 @@ Is being deployed with this url (https://sapir-delivery-server.herokuapp.com) - 
 The url above (client project) link to the home page, where the user can insert his adrress and postal code (the last not mandatory).
 
 ### 'udmin flow'
-'/Admin' will link to an admin page wehre you can view all the delivery methods.
+'/Admin' will link to an admin page where you can view the delivery methods.
 - Edit method by pressing a row.
 - Add new method by pressing the button
 
