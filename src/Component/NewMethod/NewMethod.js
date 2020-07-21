@@ -30,7 +30,6 @@ class NewMethod extends Component {
   }
 
   setLocation(currentCircleObg) {
-    console.log('currentCircleObg', currentCircleObg);
     this.setState({
       radius: currentCircleObg.radius,
       centerLat: currentCircleObg.lat,
@@ -40,7 +39,6 @@ class NewMethod extends Component {
 
   componentDidMount() {
     if (this.method !== null) {
-      console.log('NewMethod', this.method);
       this.setState({
         radius: this.method.radius,
         centerLat: this.method.centerLat,
@@ -54,7 +52,6 @@ class NewMethod extends Component {
 
   handleSubmit() {
     const methodObj = this.state;
-    console.log('methodObj', methodObj);
     fetch('https://sapir-delivery-server.herokuapp.com/addMethod', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -66,7 +63,7 @@ class NewMethod extends Component {
           'https://sapir-delivery-client.herokuapp.com/Admin'
         );
       } else {
-        alert('No suitable methods');
+        console.log(res.reason);
       }
     });
   }
@@ -80,7 +77,7 @@ class NewMethod extends Component {
 
   render() {
     return (
-      <div className='newMethodContainer'>
+      <div className="newMethodContainer">
         <h2>Set your method range using the map or enter a zip code</h2>
         <Map
           method={this.method}

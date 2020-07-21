@@ -12,7 +12,7 @@ class EditMethod extends Component {
   componentDidMount() {
     const params = new URLSearchParams(window.location.search);
     const methodId = params.get('id');
-    console.log('methodId', methodId);
+
     if (methodId !== null) {
       fetch('https://sapir-delivery-server.herokuapp.com/findMethod', {
         method: 'POST',
@@ -21,10 +21,8 @@ class EditMethod extends Component {
       }).then(async (response) => {
         let res = await response.json();
         if (res.success) {
-          console.log('res', res.method);
           this.setState({ methodObg: res.method });
         } else {
-          console.log('here no id');
           window.location.assign(
             'https://sapir-delivery-client.herokuapp.com/Error'
           );

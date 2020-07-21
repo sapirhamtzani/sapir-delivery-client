@@ -30,7 +30,7 @@ class Admin extends Component {
         let res = await response.json();
         this.setState({ list: res.list });
       })
-      .catch((e) => alert(`failed to fetch ${e}`));
+      .catch((e) => alert(`failed to fetch ${e.message}`));
   }
 
   render() {

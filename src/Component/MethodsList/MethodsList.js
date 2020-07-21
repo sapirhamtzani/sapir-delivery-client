@@ -37,8 +37,6 @@ const MethodsList = (props) => {
   const classes = useStyles();
   const { methodsList } = props;
   const { rule } = props;
-  console.log(methodsList);
-
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">

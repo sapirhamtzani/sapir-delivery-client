@@ -19,7 +19,6 @@ class Form extends Component {
       zipcode: this.state.zipcode,
     };
 
-    console.log('userObj', userObj);
     fetch('https://sapir-delivery-server.herokuapp.com/getUserMethods', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -27,9 +26,12 @@ class Form extends Component {
     }).then(async (response) => {
       let res = await response.json();
       if (res.success) {
-        Object.entries(res.list).length > 0
-          ? this.setState({ methodsList: res.list })
-          : alert('Sorry! but there are no deliveries to your area');
+        if (Object.entries(res.list).length > 0)
+          this.setState({ methodsList: res.list });
+        else {
+          alert('Sorry! but there are no deliveries to your area');
+          this.setState({ methodsList: null });
+        }
       } else {
         console.log(res.reason);
       }
@@ -37,7 +39,6 @@ class Form extends Component {
   }
 
   handleChangeAddress(location) {
-    console.log('handleChangeAddress');
     this.setState({ address: location });
   }
 
@@ -59,13 +60,6 @@ class Form extends Component {
                 this.handleChangeAddress(location)
               }
             />
-
-            {/*<input*/}
-            {/*type="text"*/}
-            {/*className="form-control"*/}
-            {/*placeholder="Enter address"*/}
-            {/*onChange={(event) => this.handleChangeAddress(event)}*/}
-            {/*/>*/}
           </div>
           <div className="form-group">
             <label>Zip Code</label>

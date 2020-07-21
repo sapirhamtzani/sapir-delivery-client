@@ -19,8 +19,6 @@ class Autocomplete extends React.Component {
   handleSelect = async (address) => {
     let results = await geocodeByAddress(address);
     let latLng = await getLatLng(results[0]);
-    console.log('results', results);
-    console.log('Success', latLng);
     this.handleChangeAddress(address);
   };
 
