@@ -1,9 +1,9 @@
 This client project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app),
 and build as a single-page applications(SPA).
-is being deployed with this url (https://sapir-delivery-client.herokuapp.com).
+Is being deployed with this url (https://sapir-delivery-client.herokuapp.com).
 
 The server project was bootstrapped with 'express' and written in NodeJs.
-is being deployed with this url (https://sapir-delivery-server.herokuapp.com) - Not necessary for running.
+Is being deployed with this url (https://sapir-delivery-server.herokuapp.com) - Not necessary for running.
 
 ### 'user flow'
 The url above (client project) link to the home page, where the user can insert his adrress and postal code (the last not mandatory).
