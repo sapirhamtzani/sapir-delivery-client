@@ -5,10 +5,10 @@ Is being deployed with this url (https://sapir-delivery-client.herokuapp.com).
 The server project was bootstrapped with 'express' and written in NodeJs.
 Is being deployed with this url (https://sapir-delivery-server.herokuapp.com) - Not necessary for running.
 
-### 'user flow'
+### 'User flow'
 The url above (client project) link to the home page, where the user can insert his adrress and postal code (the last not mandatory).
 
-### 'udmin flow'
+### 'Admin flow'
 '/Admin' will link to an admin page where you can view the delivery methods.
 - Edit method by pressing a row.
 - Add new method by pressing the button.
@@ -23,7 +23,7 @@ The url above (client project) link to the home page, where the user can insert 
 - Displays the current information for the method we wish to edit.
 - Submit will save the new information.
 
-### 'database'
+### 'Database'
 - The project data is being storage in 'Firebase' platform.
 
 ### 'Uses modules client':
