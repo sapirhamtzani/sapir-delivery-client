@@ -2,6 +2,8 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import './Map.css';
 
+const key = 'AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4';
+
 const Map = (props) => {
   let currentCircleObg = {
     lat: '',
@@ -13,7 +15,7 @@ const Map = (props) => {
   return (
     <div className="mapContainer">
       <GoogleMap
-        bootstrapURLKeys={{ key: 'AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4' }}
+        bootstrapURLKeys={{ key: key }}
         defaultZoom={14}
         defaultCenter={
           method !== null

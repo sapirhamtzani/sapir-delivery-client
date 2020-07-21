@@ -10,6 +10,7 @@ class Form extends Component {
       address: null,
       zipcode: null,
       methodsList: null,
+      msg: false,
     };
   }
 
@@ -27,11 +28,9 @@ class Form extends Component {
       let res = await response.json();
       if (res.success) {
         if (Object.entries(res.list).length > 0)
-          this.setState({ methodsList: res.list });
+          this.setState({ methodsList: res.list, msg: false });
         else {
-          this.setState({ methodsList: null }, () => {
-            alert('Sorry! but there are no deliveries to your area');
-          });
+          this.setState({ msg: true, methodsList: null });
         }
       } else {
         console.log(res.reason);
@@ -82,6 +81,9 @@ class Form extends Component {
           >
             Submit
           </button>
+          {this.state.msg ? (
+            <h3>Sorry! There are no deliveries to your area</h3>
+          ) : null}
         </div>
         {this.state.methodsList !== null ? (
           <div className="methodListContainer">
