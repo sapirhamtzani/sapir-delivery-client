@@ -37,6 +37,7 @@ class NewMethod extends Component {
       centerLng: currentCircleObg.lng,
     });
   }
+
   componentDidMount() {
     if (this.method !== null) {
       console.log('NewMethod', this.method);

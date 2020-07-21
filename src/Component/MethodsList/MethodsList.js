@@ -36,6 +36,7 @@ const useStyles = makeStyles({
 const MethodsList = (props) => {
   const classes = useStyles();
   const { methodsList } = props;
+  const { rule } = props;
   console.log(methodsList);
 
   return (
@@ -52,7 +53,9 @@ const MethodsList = (props) => {
           {Object.keys(methodsList).map((key) => (
             <StyledTableRow
               className="tableRow"
-              onClick={() => props.moveToEditMethodPage(key)}
+              onClick={() =>
+                rule === 'admin' ? props.moveToEditMethodPage(key) : null
+              }
               key={key}
             >
               <StyledTableCell component="th" scope="row">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MethodsList from '../MethodsList/MethodsList';
 import './Form.css';
+import Autocomplete from '../Autocomplete/Autocomplete';
 
 class Form extends Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class Form extends Component {
       address: null,
       zipcode: null,
       methodsList: null,
-      location: null,
     };
   }
 
@@ -19,25 +19,7 @@ class Form extends Component {
       zipcode: this.state.zipcode,
     };
 
-    // fetch(
-    //   `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-    //     userObj.address
-    //   )}&key=AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4`
-    // ).then(async (res) => {
-    //   let { results } = await res.json();
-    //   let cordLat = results[0].geometry.location.lat;
-    //   let cordLng = results[0].geometry.location.lng;
-    //   let centerLat = '32.09477268566945';
-    //   let centerLng = ' 34.77666432381626';
-    //   console.log(cordLat);
-    //   console.log(cordLng);
-    //   console.log(
-    //     Math.sqrt(
-    //       Math.pow(Number(cordLat) - Number(centerLat), 2) +
-    //         Math.pow(Number(cordLng) - Number(centerLng), 2)
-    //     )
-    //   );
-    // });
+    console.log('userObj', userObj);
     fetch('https://sapir-delivery-server.herokuapp.com/getUserMethods', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -45,29 +27,22 @@ class Form extends Component {
     }).then(async (response) => {
       let res = await response.json();
       if (res.success) {
-        console.log('list', res.list);
-        this.setState({ methodsList: res.list });
+        Object.entries(res.list).length > 0
+          ? this.setState({ methodsList: res.list })
+          : alert('Sorry! but there are no deliveries to your area');
       } else {
-        alert('No suitable methods');
+        console.log(res.reason);
       }
     });
   }
 
-  handleChangeAddress(event) {
-    this.setState({ address: event.target.value });
+  handleChangeAddress(location) {
+    console.log('handleChangeAddress');
+    this.setState({ address: location });
   }
 
   handleChangeZipCode(event) {
     this.setState({ zipcode: event.target.value });
-  }
-
-  componentDidMount() {
-    fetch(
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4&libraries=places'
-    ).then(async (res) => {
-      let result = await res.json();
-      this.setState({ location: result });
-    });
   }
 
   render() {
@@ -79,12 +54,18 @@ class Form extends Component {
           </div>
           <div className="form-group">
             <label>Address</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter address"
-              onChange={(event) => this.handleChangeAddress(event)}
+            <Autocomplete
+              handleChangeAddress={(location) =>
+                this.handleChangeAddress(location)
+              }
             />
+
+            {/*<input*/}
+            {/*type="text"*/}
+            {/*className="form-control"*/}
+            {/*placeholder="Enter address"*/}
+            {/*onChange={(event) => this.handleChangeAddress(event)}*/}
+            {/*/>*/}
           </div>
           <div className="form-group">
             <label>Zip Code</label>

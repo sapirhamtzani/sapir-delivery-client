@@ -42,6 +42,7 @@ class Admin extends Component {
         <div className="AdminPage">
           <MethodsList
             methodsList={this.state.list}
+            rule={'admin'}
             moveToEditMethodPage={(methodId) =>
               this.moveToEditMethodPage(methodId)
             }
