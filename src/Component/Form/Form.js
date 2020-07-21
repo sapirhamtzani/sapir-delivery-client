@@ -29,8 +29,9 @@ class Form extends Component {
         if (Object.entries(res.list).length > 0)
           this.setState({ methodsList: res.list });
         else {
-          alert('Sorry! but there are no deliveries to your area');
-          this.setState({ methodsList: null });
+          this.setState({ methodsList: null }, () => {
+            alert('Sorry! but there are no deliveries to your area');
+          });
         }
       } else {
         console.log(res.reason);
