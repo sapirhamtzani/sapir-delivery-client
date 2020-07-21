@@ -21,6 +21,25 @@ class Form extends Component {
       zipcode: this.state.zipcode,
     };
 
+    // fetch(
+    //   `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+    //     userObj.address
+    //   )}&key=AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4`
+    // ).then(async (res) => {
+    //   let { results } = await res.json();
+    //   let cordLat = results[0].geometry.location.lat;
+    //   let cordLng = results[0].geometry.location.lng;
+    //   let centerLat = '32.09477268566945';
+    //   let centerLng = ' 34.77666432381626';
+    //   console.log(cordLat);
+    //   console.log(cordLng);
+    //   console.log(
+    //     Math.sqrt(
+    //       Math.pow(Number(cordLat) - Number(centerLat), 2) +
+    //         Math.pow(Number(cordLng) - Number(centerLng), 2)
+    //     )
+    //   );
+    // });
     fetch('https://sapir-delivery-server.herokuapp.com/getUserMethods', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -28,6 +47,7 @@ class Form extends Component {
     }).then(async (response) => {
       let res = await response.json();
       if (res.success) {
+        console.log('list', res.list);
         this.setState({ methodsList: res.list });
       } else {
         alert('No suitable methods');
@@ -60,22 +80,22 @@ class Form extends Component {
             <h2>Discover the deliveries closest to you</h2>
           </div>
           {/*<Autocomplete*/}
-            {/*id="country-select-demo"*/}
-            {/*style={{ width: 300 }}*/}
-            {/*options={this.state.location}*/}
-            {/*autoHighlight*/}
-            {/*getOptionLabel={(option) => option.label}*/}
-            {/*renderInput={(params) => (*/}
-              {/*<TextField*/}
-                {/*{...params}*/}
-                {/*label="Address"*/}
-                {/*variant="outlined"*/}
-                {/*inputProps={{*/}
-                  {/*...params.inputProps,*/}
-                  {/*autoComplete: 'new-password', // disable autocomplete and autofill*/}
-                {/*}}*/}
-              {/*/>*/}
-            {/*)}*/}
+          {/*id="country-select-demo"*/}
+          {/*style={{ width: 300 }}*/}
+          {/*options={this.state.location}*/}
+          {/*autoHighlight*/}
+          {/*getOptionLabel={(option) => option.label}*/}
+          {/*renderInput={(params) => (*/}
+          {/*<TextField*/}
+          {/*{...params}*/}
+          {/*label="Address"*/}
+          {/*variant="outlined"*/}
+          {/*inputProps={{*/}
+          {/*...params.inputProps,*/}
+          {/*autoComplete: 'new-password', // disable autocomplete and autofill*/}
+          {/*}}*/}
+          {/*/>*/}
+          {/*)}*/}
           {/*/>*/}
           <div className="form-group">
             <label>Address</label>

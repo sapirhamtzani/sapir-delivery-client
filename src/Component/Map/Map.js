@@ -15,7 +15,11 @@ const Map = (props) => {
       <GoogleMap
         bootstrapURLKeys={{ key: 'AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4' }}
         defaultZoom={14}
-        defaultCenter={{ lat: 32.109333, lng: 34.855499 }}
+        defaultCenter={
+          method !== null
+            ? { lat: method.centerLat, lng: method.centerLng }
+            : { lat: 32.109333, lng: 34.855499 }
+        }
         onGoogleApiLoaded={({ map, maps }) => {
           // eslint-disable-next-line
           const circle = new google.maps.Circle({
@@ -46,5 +50,3 @@ const Map = (props) => {
 };
 
 export default Map;
-
-
