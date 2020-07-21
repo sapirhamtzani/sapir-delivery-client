@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MethodsList from '../MethodsList/MethodsList';
 import './Admin.css';
-import '../Form/Form.css';
 
 //return to class with lifecycle compononet
 
@@ -48,7 +47,7 @@ class Admin extends Component {
             }
           />
         </div>
-        <div className="buttonContainer">
+        <div className="buttonContainerAdmin">
           <button
             type="submit"
             className="btn btn-primary"

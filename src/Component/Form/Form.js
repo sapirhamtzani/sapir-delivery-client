@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Autocomplete } from '@material-ui/lab';
+import { TextField } from '@material-ui/core';
 import MethodsList from '../MethodsList/MethodsList';
 import './Form.css';
 
@@ -6,9 +8,10 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: '',
-      zipcode: '',
+      address: null,
+      zipcode: null,
       methodsList: null,
+      location: null,
     };
   }
 
@@ -17,6 +20,7 @@ class Form extends Component {
       address: this.state.address,
       zipcode: this.state.zipcode,
     };
+
     fetch('https://sapir-delivery-server.herokuapp.com/getUserMethods', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,10 +43,40 @@ class Form extends Component {
     this.setState({ zipcode: event.target.value });
   }
 
+  componentDidMount() {
+    fetch(
+      'https://maps.googleapis.com/maps/api/js?key=AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4&libraries=places'
+    ).then(async (res) => {
+      let result = await res.json();
+      this.setState({ location: result });
+    });
+  }
+
   render() {
     return (
       <div className="Form">
         <div>
+          <div className="headlineForm">
+            <h2>Discover the deliveries closest to you</h2>
+          </div>
+          {/*<Autocomplete*/}
+            {/*id="country-select-demo"*/}
+            {/*style={{ width: 300 }}*/}
+            {/*options={this.state.location}*/}
+            {/*autoHighlight*/}
+            {/*getOptionLabel={(option) => option.label}*/}
+            {/*renderInput={(params) => (*/}
+              {/*<TextField*/}
+                {/*{...params}*/}
+                {/*label="Address"*/}
+                {/*variant="outlined"*/}
+                {/*inputProps={{*/}
+                  {/*...params.inputProps,*/}
+                  {/*autoComplete: 'new-password', // disable autocomplete and autofill*/}
+                {/*}}*/}
+              {/*/>*/}
+            {/*)}*/}
+          {/*/>*/}
           <div className="form-group">
             <label>Address</label>
             <input
@@ -64,7 +98,11 @@ class Form extends Component {
           <button
             type="submit"
             className="btn btn-primary"
-            onClick={() => this.handleSubmit()}
+            onClick={() =>
+              this.state.address !== null
+                ? this.handleSubmit()
+                : alert('address cant be empty')
+            }
           >
             Submit
           </button>

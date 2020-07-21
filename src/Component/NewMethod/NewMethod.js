@@ -7,12 +7,12 @@ class NewMethod extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      radius: '',
-      centerLat: '',
-      centerLng: '',
-      zipcode: '',
-      methodName: '',
-      methodRate: '',
+      radius: null,
+      centerLat: null,
+      centerLng: null,
+      zipcode: null,
+      methodName: null,
+      methodRate: null,
     };
 
     this.method = props.method ? props.method : null;
@@ -131,7 +131,14 @@ class NewMethod extends Component {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={() => this.handleSubmit()}
+              onClick={() =>
+                this.state.zipcode !== null ||
+                (this.state.centerLat !== null && this.state.centerLng !== null)
+                  ? this.handleSubmit()
+                  : alert(
+                      'Must fill Zip Code or determine the range using the map'
+                    )
+              }
             >
               Submit
             </button>
