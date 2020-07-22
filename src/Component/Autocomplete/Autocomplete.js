@@ -54,6 +54,7 @@ class Autocomplete extends React.Component {
                       className,
                       style,
                     })}
+
                   >
                     <span>{suggestion.description}</span>
                   </div>

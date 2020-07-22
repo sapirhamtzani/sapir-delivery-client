@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import './Map.css';
 
-const key = 'AIzaSyAcsAWJRVDJlbmQiQYGSeNhHTZlWaJ1MO4';
+const key = 'AIzaSyAC1OX4z6pUNphBqh18NTitstI68DQf7KU';
 
 const Map = (props) => {
   let currentCircleObg = {
