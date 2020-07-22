@@ -39,6 +39,7 @@ class Form extends Component {
   }
 
   handleChangeAddress(location) {
+    console.log('handleChangeAddress', location);
     this.setState({ address: location });
   }
 
